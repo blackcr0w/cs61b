@@ -28,6 +28,14 @@ public class Triangle {
 
     // Return triangle type
     //TODO:  return either "Equilateral", "Isosceles", or "Scalene"
+    if (s1==s2 && s2==s3){
+      return "Equilateral";}
+  
+    else if ((s1==s2)||(s2==s3)||(s1==s3)){
+      return "Isosceles";}
+    
+    else
+      return "Scalene";
     return null; //REPLACE THIS LINE
   }
 }

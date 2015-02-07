@@ -22,6 +22,9 @@ public class TriangleTest {
 
     @Test
     public void testEquilateral() {
+      Triangle u = new Triangle(30, 30, 30);
+        String result = t.triangleType();
+        assertEquals("Equilateral", result);
       //TODO: FILL IN
     }
 
