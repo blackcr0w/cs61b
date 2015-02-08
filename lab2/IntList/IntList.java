@@ -4,6 +4,7 @@ import java.util.Formatter;
  *  @author P. N. Hilfinger, with some modifications by Josh Hug and melaniecebula
  *  [Do not modify this file.]
  */
+
 public class IntList {
   /** First element of list. */
   public int head;
@@ -18,7 +19,12 @@ public class IntList {
 
   /** A List with null tail, and head = 0. */
   public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+    /* NOTE: public IntList () { }  would also work. 
+    * really
+    * important
+    * note 
+    */
+
     this(0, null);
   }
 
@@ -32,23 +38,23 @@ public class IntList {
   }
 
   /** Returns a list equal to L with all elements squared. Non-destructive. */
-  public static IntList squareListIterative(IntList L) {
+  public static IntList squareListIterative(IntList L) { //迭代方法
     if (L == null) {
       return null;
     }
-    IntList res = new IntList(L.head * L.head, null);
+     IntList res = new IntList(L.head * L.head, null);
     IntList ptr = res;
-    L = L.tail;
+    L = L.tail; 
     while (L != null) {
       ptr.tail = new IntList(L.head * L.head, null);
       L = L.tail;
       ptr = ptr.tail;
     }
-    return res;
+    return res; //res is the new List
   }
 
   /** Returns a list equal to L with all elements squared. Non-destructive. */
-  public static IntList squareListRecursive(IntList L) {
+  public static IntList squareListRecursive(IntList L) { //递归方法
     if (L == null) {
       return null;
     }
@@ -63,14 +69,79 @@ public class IntList {
 
   public static IntList dcatenate(IntList A, IntList B) {
     //TODO:  fill in method
-    return null;
+    IntList empty = IntList.list();
+
+    if ((A == empty) && (B == empty)) {
+    return empty;
+    }
+
+    if (A == empty) {
+      /* A = B;
+      System.out.println (A.head);
+      System.out.println ((A.tail).head); */
+    return B;
+    }
+    if (B == empty) {
+      /* B = A; */
+    return A;
+    }
+
+    IntList p = A;
+    //IntList res = p;
+    while (p.tail != null) { 
+    System.out.println(p.head);
+    p = p.tail;
+    }
+
+    p.tail = B; //这里要注意不要指空了
+    /* System.out.println(p.head);
+    System.out.println((p.tail).head); */
+    /*while (res != null) {
+      System.out.println(res.head);
+      res = res.tail;
+    }
+
+
+//    IntList A = res;
+
+    while (A != null) {
+      System.out.println(A.head);
+      A = A.tail;
+     
+    } */
+    return A;
   }
 
   /** Returns a list consisting of the elements of A followed by the
    ** elements of B.  May NOT modify items of A.  Use 'new'. */
-  public static IntList catenate(IntList A, IntList B) {
+  public static IntList catenate(IntList A, IntList B) { //using the Iterative Algorithem 迭代
     //TODO:  fill in method
-    return null;
+    IntList empty0 = IntList.list();
+    if ((A == empty0) &&(B == empty0)) {
+    return empty0;
+    }
+
+    if (A == empty0) {
+    return B;
+    }
+    if (B == empty0) {
+    return A;
+    }
+
+
+    IntList res = new IntList(A.head, null);
+    IntList ptr = res;
+    IntList oldA = A;
+    while (A.tail != null) {
+      ptr.tail = new IntList((A.tail).head, null);
+      A = A.tail;
+      ptr = ptr.tail;
+    }
+
+    ptr.tail = B;
+    A = oldA;
+    return res; //res is the new List
+
   }
 
 
@@ -111,7 +182,7 @@ public class IntList {
     IntList result, p;
 
     if (args.length > 0) {
-      result = new IntList(args[0], null);
+      result = new IntList(args[0], null); //IntList是已经定义的变量，使用new来调用初始化函数
     } else {
       return null;
     }
@@ -206,4 +277,8 @@ public class IntList {
     return out.toString();
   }
 }
+
+
+
+
 
