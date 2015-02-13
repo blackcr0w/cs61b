@@ -1,0 +1,1 @@
+Because of the “autoboxing”, java compiler use integer valueOf method when passing the value of i an j. But the maximum cache in JVM for integer is 127. That’s why the loop stops at the 127 time and finally i = 128 because of the “if(…;…;++i,++j)”, which add 1 to i and j before judging the condition.
