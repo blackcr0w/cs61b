@@ -1,4 +1,5 @@
 Q1.
+<<<<<<< HEAD
 (a) SuperAnimal
 (b) No
 (c) Ringding
@@ -17,3 +18,23 @@ Q3.
 (b) SuperAnimal
 (c) SuperAnimal
 (d) static
+=======
+(a) 
+(b) 
+(c) 
+(d) 
+(e) 
+(f) 
+
+Q2.
+(a) 
+(b) 
+(c) 
+(d) 
+
+Q3.
+(a) 
+(b) 
+(c) 
+(d) 
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5

@@ -4,7 +4,11 @@ import java.util.Formatter;
  * ApplicableIntList.java
  * A list that stores integers in ascending order.
  */
+<<<<<<< HEAD
 public class ApplicableIntList {
+=======
+public class ApplicableIntList{
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5
     /** First element of list. */
     public int head;
     /** Remaining elements of list. */
@@ -12,17 +16,26 @@ public class ApplicableIntList {
 
     /** A list with head HEAD0 and tail TAIL0. */
     public ApplicableIntList(int head0, ApplicableIntList tail0) {
+<<<<<<< HEAD
         head = head0;
         tail = tail0;
+=======
+        // REPLACE THIS LINE WITH YOUR SOLUTION
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5
     }
 
     /** A list with null tail, and head = 0. */
     public ApplicableIntList() {
+<<<<<<< HEAD
         this(0, null);
+=======
+        // REPLACE THIS LINE WITH YOUR SOLUTION
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5
     }
 
     /** Inserts int i into its correct location, doesn't handle cycles. */
     public void insert(int i) {
+<<<<<<< HEAD
         if (i < head) {
             // edge case: inserting to front of list
             tail = new ApplicableIntList(head, tail);
@@ -36,22 +49,30 @@ public class ApplicableIntList {
             }
             curr.tail = new ApplicableIntList(i, curr.tail);
         }
+=======
+        // REPLACE THIS LINE WITH YOUR SOLUTION
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5
     }
 
     /** Returns the i-th int in this list.
      *  The first element, which is in location 0, is the 0th element.
      *  Assume i takes on the values [0, length of list - 1]. */
     public int get(int i) {
+<<<<<<< HEAD
         ApplicableIntList curr = this;
         while (curr.tail != null && i != 0) {
             curr = curr.tail;
             i--;
         }
         return curr.head;
+=======
+        // REPLACE THIS LINE WITH YOUR SOLUTION
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5
     }
 
     /** Applies the function f to every item in this list. */
     public void apply(IntUnaryFunction f) {
+<<<<<<< HEAD
         ApplicableIntList curr = this;
         //applying function
         while (curr != null) {
@@ -68,6 +89,9 @@ public class ApplicableIntList {
         //update pointers
         head = newList.head;
         tail = newList.tail;
+=======
+        // REPLACE THIS LINE WITH YOUR SOLUTION
+>>>>>>> 5053240e14ac83e7ffd2bf6db76e173c8f35e1b5
     }
 
     /** Returns NULL if no cycle exists, else returns cycle location. */
