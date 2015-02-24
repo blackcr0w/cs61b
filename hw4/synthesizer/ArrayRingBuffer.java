@@ -22,6 +22,7 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     first = 0;
     last = 0;
     fillCount = 0;
+    flag = false;
 
     // TODO: Create new array with capacity elements.
     //       first, last, and fillCount should all be set to 0. 
@@ -33,11 +34,12 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     * throw new RuntimeException("Ring buffer overflow") 
     */
   public void enqueue(double x) {
-    flag = true;
 
     if (this.isFull()) {
       throw new RuntimeException("Ring buffer overflow");
     }
+    
+    flag = true;
 
     rb[last] = x;
     last += 1;
@@ -74,9 +76,9 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
   /** Return oldest item, but don't remove it. */
   public double peek() {
     // TODO: Return the first item. None of your instance variables should change.
-    /*if (this.isEmpty()) {
+    if (this.isEmpty()) {
       throw new RuntimeException("Ring buffer underflow");
-    }*/
+    }
     return rb[first];
   }
 
@@ -103,6 +105,8 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
   }
 
   public boolean isEmpty() {
+    return ((flag == false) && (first == last));
+
     if ((flag == false) && (first == last))
       return true;
     else return false;
