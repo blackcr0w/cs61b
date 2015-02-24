@@ -51,6 +51,9 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     */
   public double dequeue() {
     double x;
+    if (fillCount == 0) {
+      return;
+    }
     flag = false;
     x = rb[first];
     rb[first] = 0;
@@ -67,6 +70,9 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
   /** Return oldest item, but don't remove it. */
   public double peek() {
     // TODO: Return the first item. None of your instance variables should change.
+    if (fillCount == 0) {
+      return 0.0;
+    }
     return rb[first];
   }
 
