@@ -38,7 +38,7 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     if (this.isFull()) {
       throw new RuntimeException("Ring buffer overflow");
     }
-    
+
     flag = true;
 
     rb[last] = x;
@@ -105,8 +105,6 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
   }
 
   public boolean isEmpty() {
-    return ((flag == false) && (first == last));
-
     if ((flag == false) && (first == last))
       return true;
     else return false;
