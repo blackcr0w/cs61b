@@ -12,7 +12,11 @@ import static org.junit.Assert.*;
  */
 
 public class TestGuitarString {
+<<<<<<< HEAD
     @Test
+=======
+/*    @Test
+>>>>>>> 0e8e6d031624aef8d9ca4fda76ad5960688d6ebd
     public void testPluckTheAString() {
         double CONCERT_A = 440.0;
         GuitarString aString = new GuitarString(CONCERT_A);
@@ -21,7 +25,11 @@ public class TestGuitarString {
             StdAudio.play(aString.sample());
             aString.tic();
         }
+<<<<<<< HEAD
     }
+=======
+    }*/
+>>>>>>> 0e8e6d031624aef8d9ca4fda76ad5960688d6ebd
 
     /** Calls tests for GuitarString. */
     public static void main(String[] args) {
