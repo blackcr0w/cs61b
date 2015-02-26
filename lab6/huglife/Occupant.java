@@ -7,12 +7,12 @@ import java.awt.Color;
  *  Intended for extension by:
  *     Creature, Empty, and Impassible only.
  */
-public abstract class Occupant {
+public abstract class Occupant { // Abstract class can have concrete or abstract methods.
     /** Name for this type of Occupant. */
     protected final String name;
 
     /** Creates an Occupant with name equal to N. */
-    public Occupant(String n) {
+    public Occupant(String n) { //constructor
         name = n;
     }
 
