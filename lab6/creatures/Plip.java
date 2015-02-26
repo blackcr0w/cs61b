@@ -20,17 +20,17 @@ public class Plip extends Creature {
     private int b;
 
     /** creates plip with energy equal to E. */
-    public Plip(double e) {
-        super("plip");
+    public Plip(double e) { //constructor
+        super("plip"); //call name method
         r = 0;
         g = 0;
         b = 0;
-        energy = e;
+        energy = e; //energy is inherited from Creature
     }
 
     /** creates a plip with energy equal to 1. */
     public Plip() {
-        this(1);
+        this(1); // Another Constructor.
     }
 
     /** Should return a color with red = 99, blue = 76, and green that varies
