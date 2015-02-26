@@ -263,3 +263,4 @@ An example of code using exceptions can be found in the demo folder (you'll need
 
 >>>>>>> 0e8e6d031624aef8d9ca4fda76ad5960688d6ebd
 Credits: RingBuffer figures from [wikipedia](http://en.wikipedia.org/wiki/Circular_buffer). This assignment adapted from [Kevin Wayne's Guitar Heroine](http://nifty.stanford.edu/2012/wayne-guitar-heroine/) assignment.
+Jack Zhao
