@@ -31,3 +31,7 @@ public class GuitarHeroLite {
           }
        }
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e1bbadc221c51d09566b8f7145077465ce9db986

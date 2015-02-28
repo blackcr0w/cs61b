@@ -1,5 +1,6 @@
 package synthesizer;
 import org.junit.Test;
+<<<<<<< HEAD
 import org.junit.Before;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -137,9 +138,26 @@ public class TestArrayRingBuffer {
     } 
 
 
+=======
+import static org.junit.Assert.*;
+
+/** Tests the ArrayRingBuffer class.
+ *  @author Josh Hug
+ */
+
+public class TestArrayRingBuffer {
+    @Test
+    public void someTest() {
+        //ArrayRingBuffer arb = new ArrayRingBuffer(10);
+    }
+>>>>>>> e1bbadc221c51d09566b8f7145077465ce9db986
 
     /** Calls tests for ArrayRingBuffer. */
     public static void main(String[] args) {
         jh61b.junit.textui.runClasses(TestArrayRingBuffer.class);
     }
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> e1bbadc221c51d09566b8f7145077465ce9db986

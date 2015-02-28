@@ -7,12 +7,12 @@ import java.awt.Color;
  *  Intended for extension by:
  *     Creature, Empty, and Impassible only.
  */
-public abstract class Occupant { // Abstract class can have concrete or abstract methods.
+public abstract class Occupant {
     /** Name for this type of Occupant. */
     protected final String name;
 
     /** Creates an Occupant with name equal to N. */
-    public Occupant(String n) { //constructor
+    public Occupant(String n) {
         name = n;
     }
 
@@ -25,7 +25,7 @@ public abstract class Occupant { // Abstract class can have concrete or abstract
      *  Intended for use by subtypes so they don't have to import
      *  or think about colors.
      */
-    protected static Color color(int r, int g, int b) {
+    protected static Color color(int r, int g, int b) { ////Q1: Why return new? Recursive?
         return new Color(r, g, b);
     }
 
