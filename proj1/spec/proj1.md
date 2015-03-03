@@ -31,9 +31,15 @@ To get started, use the ever fun to type ```git pull skeleton master```. You'll 
 
 Part of the grade for this project will include following the [course style guidelines](http://berkeley-cs61b.github.io/public_html/materials/guides/style-guide.html). As noted, you should not try to read these rules, though they may be a useful reference. It will be much easier to simply run the style checker. You can do this by running the style61b.py script provided in the lib folder (you may need to pull from skeleton again if you don't see it). For example, on my machine, I can run it as follows.
 
+<<<<<<< HEAD
     $ python /Users/jug/work/61b/course-materials/lib/style61b.py \*.java
 
 There are no secret tests for the style checker, though we reserve the right to grade you holistically on your overall code composition. 
+=======
+    $ python /Users/jug/work/61b/course-materials/lib/style61b.py *.java
+
+There are no secret tests for the style checker, though we reserve the right to grade you holistically on your overall code composition. We will only style check the required .java files, i.e. those in the MethodSignatures file / javadocs.
+>>>>>>> 82d714131bdefb6ca50b8e0216bc88b01080d976
 
 Similarly, time permitting, we will be allocating a small portion of your grade to the thoroughness of your JUnit tests. We hope that we've convinced you that tests are easy to write and can save you a ton of time if done properly. 
 
@@ -71,9 +77,13 @@ A small subgraph of the WordNet Digraph is illustrated below. In our copy of the
 
 A graph consists of a set of V vertices and E edges (represented by arrows in the above figure) between vertices. For example, in the graph above, V = 23 and E = 23. One of these edegs is from "increase" to "jump leap", indicating that the synset "increase" is a hypernym of "jump leap". 
 
+<<<<<<< HEAD
 Your first task in this assignment is to read in the provided synset and hypernym datafiles (see further down on this page for the structure of the synset and hypernym files). To represent the arrows, we'll be using a class from the ```edu.princeton.cs.algs4``` package called Digraph (which you can import with ```edu.princeton.cs.algs4.Digraph```. You can think of this class as having only a constructor and an addEdge method.
+=======
+Your first task in this assignment is to read in the provided synset and hypernym datafiles (see further down on this page for the structure of the synset and hypernym files). To represent the arrows, we'll be using a class from the ```edu.princeton.cs.algs4``` package called Digraph (which you can import with ```edu.princeton.cs.algs4.Digraph```. You can think of this class as having only a constructor and an addEdge method (it actually has more, but you won't be using them directly, as you'll instead be relying on a provided GraphHelper class, described further below):
+>>>>>>> 82d714131bdefb6ca50b8e0216bc88b01080d976
 
-    public Digraph() {
+    public class Digraph() {
         /** Creates a new Digraph with V vertices. */
         public Digraph(int V)
 
@@ -164,7 +174,11 @@ Our ultimate goal is to make usage of the xChart plotting library easy. Since xC
 
 As throughout this assignment, the MethodSignatures file provided in the skeleton gives the exact class definition and signatures that you'll need. Likewise, see the TimeSeriesDemo class for a more thorough example of the behavior of the class. See the [TimeSeries javadocs](javadocs/index.html?ngordnet/TimeSeries.html) for a more detailed technical specification of your class.
 
+<<<<<<< HEAD
 As with everything in this assignment you should not create additional public or protected methods. Additional public classes are fine.
+=======
+As with everything in this assignment you should not create additional public or protected methods. Additional public classes are fine. It is OK to override existing public methods (e.g. equals). 
+>>>>>>> 82d714131bdefb6ca50b8e0216bc88b01080d976
 
 Warning: It is very easy to run into issues with generics. Compile frequently. Do not dare write more than one of these methods at a time.
 
@@ -187,10 +201,10 @@ The YearlyRecord class will also provide utility methods to make data analysis a
  - count(String word): Returns the count of word in this year.
  - size(): Returns the number of words recorded this year.
  - words(): Returns all words in ascending order of count.
- - counts(): Returns all words in ascending order of count.
- - rank(String word): Gives the rank of word, with 1 being the most popular word.
+ - counts(): Returns all counts in ascending order of count.
+ - rank(String word): Gives the rank of word, with 1 being the most popular word. If two words have the same rank, break ties arbitrarily. No two words should have the same rank.
 
-This one will be a bit more involved than TimeSeries. The rank, size, and count methods must all be very fast, no matter how many words are in the database. Specifically, their runtime must be measurably independent of the number of entries in the YearlyRecord. That means no looping, recursion, or similar. You can achieve this through judicious use of the right data structures.
+Revised (friendlier) performance requirements (2/28/15): This one will be a bit more involved than TimeSeries. The rank, size, and count methods should all be very fast, no matter how many words are in the database. Specifically, on a "frozen" YearlyRecord, their runtime should be about the same no matter how large the YearlyRecord, where a frozen YearlyRecord is defined as one for which no additional put operations occur. That means no looping, recursion, or similar. You can achieve this through judicious use of the right data structures. You may assume that the get methods of a map take about the same time no matter how large the map. You may not assume this about the get methods of lists.    
 
 See the [YearlyRecord javadocs](javadocs/index.html?ngordnet/YearlyRecord.html) for a more precise technical specification, and YearlyRecordDemo for additional examples showing typical use.
 
@@ -275,7 +289,11 @@ In this part, you'll create a UI with the following commands:
  - help: Provides a list of commands.
  - range [start] [end]: resets the start and end years to the values provided.
  - count [word] [year]: print the count of word in the given year.
+<<<<<<< HEAD
  - hyponyms [word]: prints all hyponyms of the given word separated by spaces.
+=======
+ - hyponyms [word]: prints all hyponyms of the given word using the default Set string representation (see below).
+>>>>>>> 82d714131bdefb6ca50b8e0216bc88b01080d976
  - history [words...]: plots relative frequency of all words from start to end.
  - hypohist [words...]: plots relative frequency of all hyponyms of words from start to end.
 
