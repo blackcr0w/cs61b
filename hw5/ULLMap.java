@@ -1,5 +1,5 @@
-import java.util.UnsupportedOperationException;
 import java.util.Iterator;
+import java.util.*;
 import java.util.Set; /* java.util.Set needed only for challenge problem. */
 
 /** A data structure that uses a linked list to store pairs of keys and values.
@@ -80,7 +80,7 @@ public class ULLMap<K, V> implements Map61B<K, V> { //FIX ME
         }
     }
 
-    public Iterator<E> iterator() {
+    public ULLMapIter iterator() {
         return new ULLMapIter(this);
     }
 
