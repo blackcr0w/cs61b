@@ -3,7 +3,7 @@ import java.util.Set;
  * append "implements Map61B<K,V>" to the end of your "public class..."
  * declaration, though you can use other formal type parameters if you'd like.
  */ 
-public interface Map61B<K, V> {
+public interface Map61B<K, V> { ////Define a MAP using the interface.
     /** Removes all of the mappings from this map. */
     public void clear();
 
@@ -18,15 +18,7 @@ public interface Map61B<K, V> {
    /* Returns the number of key-value mappings in this map. */
     public int size();
 
-<<<<<<< HEAD
-    /* Associates the specified value with the specified key in this map.
-     * Returns the previous value associated with key, or null if there was no
-     * mapping for key. (A null return can also indicate that the map previously
-     * associated null with key.)
-     */
-=======
     /* Associates the specified value with the specified key in this map. */
->>>>>>> 82d714131bdefb6ca50b8e0216bc88b01080d976
     public void put(K key, V value);
 
     /* Removes the mapping for the specified key from this map if present.

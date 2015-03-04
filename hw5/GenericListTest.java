@@ -1,4 +1,4 @@
-import org.junit.Test;
+import org.junit.Test; ////Q1: Why not launch main method in terminal?
 import static org.junit.Assert.*;
 
 public class GenericListTest {
