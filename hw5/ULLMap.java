@@ -10,7 +10,7 @@ import java.util.Set; /* java.util.Set needed only for challenge problem. */
  *  For simplicity, you may assume that nobody ever inserts a null key or value
  *  into your map.
  */ 
-public class ULLMap<K, V> implements Map61B<K, V>, Iterable { //FIX ME
+public class ULLMap<K, V> implements Map61B<K, V>, Iterable<K> { //FIX ME
     /** Keys and values are stored in a linked list of Entry objects.
       * This variable stores the first pair in this linked list. You may
       * point this at a sentinel node, or use it as a the actual front item
@@ -50,7 +50,7 @@ public class ULLMap<K, V> implements Map61B<K, V>, Iterable { //FIX ME
     }
 
 /* add a constructor method and an instance variable to the ULLMapIter */
-    public class ULLMapIter implements Iterator{ /////public Iterator<E> iterator()?? Whrer????
+    public class ULLMapIter implements Iterator<K> { /////public Iterator<E> iterator()?? Whrer????
         public Entry e;
 
         public ULLMapIter(ULLMap<K, V> umap) {
