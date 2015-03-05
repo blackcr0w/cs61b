@@ -9,12 +9,14 @@ public class ArrayList61B<E> extends AbstractList<E> {
 	public ArrayList61B(int initialCapacity) {
 		//if (initialCapacity <= 1)
 		//	throw new initialCapacity;
-		elist = new E[initialCapacity];
+		//E[] a = (E[]) Array.newInstance(c, s);
+		// items = (E[]) new Object[1]
+		elist = (E[]) new Object[initialCapacity];
 		n = 0;
 	}
 
 	public ArrayList61B() {
-		elist = new E[1];
+		elist = (E[]) new Object[1];
 		n = 0;
 	}
 
