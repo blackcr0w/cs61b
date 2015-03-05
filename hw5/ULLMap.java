@@ -59,13 +59,13 @@ public class ULLMap<K, V> implements Map61B<K, V>, Iterable<K> { //FIX ME
 
          @Override
          public boolean hasNext() {
-            return e != null;
+            return !e.equals(null);
         }
 
         @Override
         public K next() {
 
-            if (e == null) {
+            if (e.equals(null)) {
             throw new NoSuchElementException();                       
             }
             K key = e.key;
@@ -87,7 +87,7 @@ public class ULLMap<K, V> implements Map61B<K, V>, Iterable<K> { //FIX ME
     @Override
     public V get(K key) { //FIX ME
     //FILL ME IN
-        for (Entry x = front; x != null; x = x.next) {
+        for (Entry x = front; !x.equals(null); x = x.next) {
             if (key.equals(x.key)) return x.val;
         }
         return null;
@@ -96,7 +96,7 @@ public class ULLMap<K, V> implements Map61B<K, V>, Iterable<K> { //FIX ME
     @Override
     public void put(K key, V val) { //FIX ME
     //FILL ME IN
-        for (Entry x = front; x != null; x = x.next)
+        for (Entry x = front; !x.equals(null); x = x.next)
             if (key.equals(x.key)) { x.val = val; return; }
         front = new Entry(key, val, front);
         N++;
@@ -105,7 +105,7 @@ public class ULLMap<K, V> implements Map61B<K, V>, Iterable<K> { //FIX ME
     @Override
     public boolean containsKey(K key) { //FIX ME
     //FILL ME IN
-        return get(key) != null; //FIX ME
+        return !get(key).equals(null); //FIX ME
     }
 
     @Override
