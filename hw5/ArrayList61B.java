@@ -30,5 +30,9 @@ public class ArrayList61B<E> extends AbstractList<E> {
 		return true;
 	}
 
+	public int size() {
+		return n;
+	}
+
 
 }
