@@ -1,6 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.Iterator;
+import java.util.*;
 
 /** ULLMapTest. You should write additional tests.
  *  @author Josh Hug
@@ -13,19 +14,8 @@ public class ULLMapTest {
         um.put("Gracias", "Dios Basado");
         assertEquals(um.get("Gracias"), "Dios Basado");
     }
-    @Test
-    public void testBasic2() {
-        ULLMap<String, String> um = new ULLMap<String, String>();
-        um.put("Gracias", "Dios Basado");
-/*        ULLMap.Entry ent = um.new Entry("a", "b", null);
-
-        System.out.println(ent.get("a"));*/
-        assertEquals(um.get("Gracias"), "Dios Basado");
-    }
-
-
     
-    /*@Test
+    @Test
     public void testIterator() {
         ULLMap<Integer, String> um = new ULLMap<Integer, String>();
         um.put(0, "zero");
@@ -33,8 +23,28 @@ public class ULLMapTest {
         um.put(2, "two");
         Iterator<Integer> umi = um.iterator();
         System.out.println(umi.next());
-    }*/
-    
+        System.out.println(umi.next());
+        System.out.println(umi.next());
+        //System.out.println(um.front.key);
+
+        //System.out.println(umi.next());
+    }
+
+    @Test
+    public void testInvert() {
+        ULLMap<Integer, String> um = new ULLMap<Integer, String>();
+        um.put(0, "zero");
+        um.put(1, "one");
+        um.put(2, "two");
+        ULLMap<String, Integer> umii = um.invert(um);
+        Iterator<String> umi = umii.iterator();
+        System.out.println(umi.next());
+        System.out.println(umi.next());
+        System.out.println(umi.next());
+        //System.out.println(um.front.key);
+
+        //System.out.println(umi.next());
+    }    
 
     /** Runs tests. */
     public static void main(String[] args) {

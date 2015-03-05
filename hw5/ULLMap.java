@@ -10,7 +10,7 @@ import java.util.Set; /* java.util.Set needed only for challenge problem. */
  *  For simplicity, you may assume that nobody ever inserts a null key or value
  *  into your map.
  */ 
-public class ULLMap<K, V> implements Map61B<K, V> { //FIX ME
+public class ULLMap<K, V> implements Map61B<K, V>, Iterable { //FIX ME
     /** Keys and values are stored in a linked list of Entry objects.
       * This variable stores the first pair in this linked list. You may
       * point this at a sentinel node, or use it as a the actual front item
@@ -50,8 +50,8 @@ public class ULLMap<K, V> implements Map61B<K, V> { //FIX ME
     }
 
 /* add a constructor method and an instance variable to the ULLMapIter */
-    public class ULLMapIter implements Iterator{
-        Entry e;
+    public class ULLMapIter implements Iterator{ /////public Iterator<E> iterator()?? Whrer????
+        public Entry e;
 
         public ULLMapIter(ULLMap<K, V> umap) {
              e = umap.front;
@@ -80,7 +80,7 @@ public class ULLMap<K, V> implements Map61B<K, V> { //FIX ME
         }
     }
 
-    public ULLMapIter iterator() {
+    public Iterator<K> iterator() { 
         return new ULLMapIter(this);
     }
 
@@ -134,6 +134,43 @@ public class ULLMap<K, V> implements Map61B<K, V> { //FIX ME
     @Override
     public Set<K> keySet() { //FIX ME SO I COMPILE
         throw new UnsupportedOperationException();
+    }
+
+
+    public static <K, V> ULLMap<V, K> invert(ULLMap<K, V> um) { /////Q: static
+        ULLMap<V, K> invertMap = new ULLMap<V, K>();
+        invertMap.front = invertMap.new Entry(um.front.val, um.front.key, null);////
+        //ULLMap<V, K>.Entry p = invertMap.front;
+        //Entry<V, K> eum = new Entry(um.front.val, um.front.key, null);
+        um.front = um.front.next;
+        while (!um.front.equals(null)) {
+            if(invertMap.containsKey(um.front.val)) {
+                um.front = um.front.next;
+                continue;
+            }
+            invertMap.front.next = invertMap.new Entry(um.front.val, um.front.key, null);
+            invertMap.front = invertMap.front.next;
+            um.front = um.front.next;
+        }
+        return invertMap;
+
+        ////Q: can this have access to private variables?
+/*        for (Iterator i = um.iterator(); i.hasNext(); ) {
+            Object o = i.next();
+            System.out.println(o);
+        }
+        if (!front.equals(null)) {
+            K tempK;
+            temK = eum.key;
+            eum.key = eum.val;
+            eum.val = 
+
+        }
+        Iterator<K> umi = um.iterator();
+        for (; umi.hasNext(); ) {
+            K o = umi.next();
+            System.out.println(o);
+  }*/
     }
 
 
