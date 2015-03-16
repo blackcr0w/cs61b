@@ -110,7 +110,7 @@ public class ULLMap<K, V> implements Map61B<K, V>, Iterable { //FIX ME
 
     @Override
     public int size() {
-        return N; // FIX ME (you can add extra instance variables if you want)
+ e       return N; // FIX ME (you can add extra instance variables if you want)
     }
 
     @Override

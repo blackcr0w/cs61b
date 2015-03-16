@@ -1,4 +1,5 @@
-import ngordnet.GraphHelper;
+package ngordnet;
+//import ngordnet.GraphHelper;
 import edu.princeton.cs.algs4.Digraph;
 import java.util.Set;
 import java.util.TreeSet;
@@ -20,8 +21,7 @@ public class GraphDemo {
         g.addEdge(6, 13);
         g.addEdge(8, 10);
         g.addEdge(9, 10);
-        System.out.println(g); ////what: 
-        //14 vertices, 12 edges 
+        System.out.println(g); ////what?
 
         Set<Integer> five = new TreeSet<Integer>();
         five.add(5);
