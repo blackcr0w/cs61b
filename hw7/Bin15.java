@@ -36,12 +36,32 @@ public class Bin15 {
     
     @Override
     public boolean equals(Object o) {
-        return false; // YOUR CODE HERE
+        int i = 0;
+        String s = (String) o;
+
+        for (i = 0; i < 15; i ++) {
+            if (s.charAt(i) != myBinStr.charAt(i))
+                break;
+        }
+        return i == 14;
     }
     
     @Override
     public int hashCode() {
-        return -1; // YOUR CODE HERE
+        int sum = 0;
+        int bit = 0;
+        int temp = 0;
+        for (int i = 0; i < 15; i ++) {
+            char bitTemp = myBinStr.charAt(i);
+            int intTemp = (int) bitTemp - 48;
+            if (intTemp == 1)
+                bit = 1;
+            else bit = 0;
+            temp = bit * (int)(Math.pow(2.0, (double)i));
+            sum = sum + temp;
+
+        }
+        return sum; 
     }
 
     /* DO THIS LAST, AFTER IMPLEMENTING EVERYTHING
@@ -51,12 +71,15 @@ public class Bin15 {
     in the method followUpAnswer(). 
     */
     public static final int followUpAnswer() {
-        return 42; // YOUR CODE HERE. THIS MAY OR MAY NOT BE CORRECT.
+        return 31; // YOUR CODE HERE. THIS MAY OR MAY NOT BE CORRECT.
     }
     
     public static void main(String[] args) {
         // Optional testing here. Potentially useless information:
         int c = 0x9 - 1 - 0b01;
+        Bin15 testBin = new Bin15("000001111100000");
+        int hc = testBin.hashCode();
+        //System.out.println(hc);
         // 0x9 means 9 in hexadecimal
         // 1 means 1 in decimal
         // 0b01 means 01 or 1 in binary
