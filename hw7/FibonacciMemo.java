@@ -9,6 +9,9 @@ public class FibonacciMemo {
      * @param n
      * @return The nth fibonacci number
      */
+    public static int c;
+    public static int b;
+    public static int a;
     public static int fibNoMemo(int n) {
         if (n <= 1) {
             return n;
@@ -24,8 +27,20 @@ public class FibonacciMemo {
      * @return The nth fibonacci number
      */
     public static int fibMemo(int n) {
-        // YOUR CODE HERE
-        return 0;
+         a = 1;
+         b = 1;
+        //int c;
+        if (n == 0)
+            return 0;
+        if (n == 1 || n == 2) 
+            return 1;
+
+        for (int i = 0; i < n - 2; i ++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return c;
     }
 
     /**
@@ -35,22 +50,22 @@ public class FibonacciMemo {
      */
     public static String why47() {
         String answer = "potatoes";
-        answer += ", " + answer + " and tapioca";
+        answer += "Overflow " + answer + " and tapioca";
         return answer;
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         // Optional testing here        
         String m = "Fibonacci's real name was Leonardo Pisano Bigollo.";
         m += "\n" + "He was the son of a wealthy merchant.\n";
         System.out.println(m);
-        System.out.println("0: " + FibonacciMemo.fibMemo(0));
-        System.out.println("1: " + FibonacciMemo.fibNoMemo(1));
+        System.out.println("0: " + FibonacciMemo.fibMemo(300));
+        System.out.println("1: " + FibonacciMemo.fibMemo(1));
         System.out.println("2: " + FibonacciMemo.fibNoMemo(2));
         System.out.println("3: " + FibonacciMemo.fibNoMemo(3));
-        System.out.println("4: " + FibonacciMemo.fibNoMemo(4));
+        System.out.println("4: " + FibonacciMemo.fibNoMemo(300));
 
         // 46th Fibonacci = 1,836,311,903
         // 47th Fibonacci = 2,971,215,073
-    }
+    }*/
 }
