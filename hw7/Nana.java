@@ -39,7 +39,8 @@ public class Nana {
             Nana other = (Nana) o;
             return this.myNum == other.myNum;
             // In other words, two Nana's are equal iff their myNums
-            // are the same value.
+            // are the same value.这里的equals规则是：只要myNums相等，则equals为真
+            //而valid的条件是：若equals为真，推出hashcode相同
         }
         return false;
     }
@@ -81,32 +82,32 @@ public class Nana {
 
     // Is hashCodeA() a perfect hash for Nana? Return "yes" or "no"
     public static final String isPerfectHashA() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeB() a perfect hash for Nana? Return "yes" or "no"
     public static final String isPerfectHashB() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeC() a perfect hash for Nana? Return "yes" or "no"
     public static final String isPerfectHashC() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeD() a perfect hash for Nana? Return "yes" or "no"
     public static final String isPerfectHashD() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeE() a perfect hash for Nana? Return "yes" or "no"
     public static final String isPerfectHashE() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeF() a perfect hash for Nana? Return "yes" or "no"
     public static final String isPerfectHashF() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     /**************************************************************/
@@ -114,50 +115,50 @@ public class Nana {
 
     // Is hashCodeA() a valid hash for Nana? Return "yes" or "no"
     public static final String isValidHashA() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeB() a valid hash for Nana? Return "yes" or "no"
     public static final String isValidHashB() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeC() a valid hash for Nana? Return "yes" or "no"
     public static final String isValidHashC() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeD() a valid hash for Nana? Return "yes" or "no"
     public static final String isValidHashD() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeE() a valid hash for Nana? Return "yes" or "no"
     public static final String isValidHashE() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "no"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     // Is hashCodeF() a valid hash for Nana? Return "yes" or "no"
     public static final String isValidHashF() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     /**************************************************************/
     /************************ Question #1.3 ***********************/
 
     public static final String worst2Best() {
-        return "A, B, C, D"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "D, A, B, C"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     /**************************************************************/
     /************************ Question #1.4 ************************/
 
     public static final String thereWasCollision() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
     public static final String canGetDrake() {
-        return "maybe"; // REPLACE THIS LINE WITH YOUR ANSWER 
+        return "yes"; // REPLACE THIS LINE WITH YOUR ANSWER 
     }
 
 } // End Nana.java
@@ -202,6 +203,7 @@ System.out.println(myHash.get(new Nana(-15))); // Prints "Rihanna"
 1.4.i)  
 Was there a collision in the second put? ("yes" or "no" or 
 "compile error"). Write your answer in thereWasCollision().
+答案：在hashmap的put中，先检查hashcode再检查equals，这里hashcode就相等了 
 
 1.4.ii) 
 Is it possible to get the mapping to Drake after adding the mapping to
