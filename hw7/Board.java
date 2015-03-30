@@ -6,7 +6,7 @@ public class Board {
 	private Piece[][] pieces;
     private boolean isFireTurn;
 
-    public Board() {
+    public Board() {//build a 8*8 board.
         pieces = new Piece[SIZE][SIZE];
         isFireTurn = true;
     }
@@ -20,13 +20,15 @@ public class Board {
         isFireTurn = true;
     }
 
-	@Override
+/*	@Override
 	public boolean equals(Object o) {
+        Board b = (Board) o;
+
         return true; // YOUR CODE HERE
 	}
-
-    @Override
+*/
+/*    @Override
     public int hashCode() {
         return 6; // YOUR CODE HERE
-    }
+    }*/
 }
