@@ -1,3 +1,4 @@
+import java.lang.Object;
 public class Piece {
 
     public final boolean side; // true means this is a fire piece
@@ -61,13 +62,19 @@ public class Piece {
 
     @Override
     public boolean equals(Object o) {
-        return false; // YOUR CODE HERE
+        Piece np = (Piece)o;
+        if(np.isFire() == this.isFire() &&  np.isBomb() == this.isBomb()) {
+            if (np.isShield() == this.isShield() && np.isKing() == this.isKing()) {
+                return true;
+            }
+        }
+        return false; 
     }
 
-    @Override
+/*    @Override
     public int hashCode() {
-        return 5; // YOUR CODE HERE
-    }
+        return this.hashCode(); // YOUR CODE HERE
+    }*/
 
     public static void main(String[] args) {
         Piece p1 = new Piece(false, 0, 0, "bomb", false);
