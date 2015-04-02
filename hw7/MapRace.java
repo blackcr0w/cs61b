@@ -8,15 +8,19 @@ public class MapRace {
     /* Tests the put action the specified number of times. */
     private static long timePuts61B(Map61B<Integer, Integer> map, 
                 int num_puts, int key_range, int val_range) {
+        map.put(key_range+1, val_range+2);
+
+
         // YOUR CODE HERE
-        return 0;
+        return currentTimeMillis();
     }
 
     /* Tests the get action the specified number of times. */
     private static long timeGets61B(Map61B<Integer, Integer> map, 
                 int num_gets, int key_range) {
+        map.get(key_range+1);
         // YOUR CODE HERE
-        return 0;
+        return currentTimeMillis();
     }
 
     /* Tests the get action the specified number of times. */
