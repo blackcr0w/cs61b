@@ -163,7 +163,7 @@ public class Commit implements Serializable{
 
         if (commitSer.exists()) {
             try {
-                //这里是读取出之前保存的cat类
+                
                 FileInputStream fileIn = new FileInputStream(commitSer);
                 ObjectInputStream objectIn = new ObjectInputStream(fileIn);
                 cmt = (Commit) objectIn.readObject();
@@ -177,6 +177,15 @@ public class Commit implements Serializable{
             }
         }
         return cmt;		
+	}
+
+	public File getFile(String fileName) {
+		String stroedFileName = folderName + "/" + fileName;
+		File oldFile = new File(stroedFileName);
+		if (oldFile.exists())
+			return oldFile;
+		else System.out.println("fail to get the old file version.");////
+		return null;
 	}
 }
 
