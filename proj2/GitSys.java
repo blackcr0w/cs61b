@@ -131,9 +131,15 @@ public class GitSys implements Serializable {
 		int ckType = parseCheckout(cmd);
 		switch (ckType) {
 			case 1://[file name]
-			String fileName = cmd;
+
 			String outFile = cmd;
 			String inFile = (this.currCommit).folderName + "/" + cmd;
+			if (outFileName.indexOf("/")!= -1) {
+				String[] directory = parseDir(outFile);
+				String folderName = directory[0];
+				outFile = directory[1];
+				makeFolder(folderName);
+			}
 			copyFiles(inFile, outFile);
 
 			break;
@@ -151,6 +157,7 @@ public class GitSys implements Serializable {
 	}
 
 	public void copyFiles(String inFileName, String outFileName) {
+
 		InputStream inStream = null;
 		OutputStream outStream = null;
 		try{
@@ -180,6 +187,16 @@ public class GitSys implements Serializable {
     		e.printStackTrace();
     		}
 	}
+
+	public static String[] parseDir(String name) {
+
+	}
+
+	public static void makeFolder (String folderName) {
+		
+	}
+ 
+
 
 
 }
