@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 public class GitSys implements Serializable {
 
-	public Commit currCommmit;
+	public Commit currCommit;
 
 	public Set<String> filesToCommit;
 
@@ -15,9 +15,9 @@ public class GitSys implements Serializable {
 		String branchName;
 		Commit headPtr;
 
-		public Branch(String _branchname, Commit _currcommmit) {
+		public Branch(String _branchname, Commit _currcommit) {
 			branchName = _branchname;
-			headPtr = _currcommmit;
+			headPtr = _currcommit;
 		}
 	}
 
@@ -26,7 +26,7 @@ public class GitSys implements Serializable {
 	public void initGitlet() {
 		//System.out.println("entering initGitlet");
 		Commit cmt = new Commit("initial commit");
-		currCommmit = cmt;
+		currCommit = cmt;
 		filesToCommit = new HashSet<String>();
 		currBranch  = new Branch("master", cmt);
 		branchList = new ArrayList<Branch>();
@@ -38,8 +38,10 @@ public class GitSys implements Serializable {
 	public void doCommit(String commitMsg) {
 		//System.out.println(filesToCommit);
 		Commit cmt = new Commit(commitMsg, filesToCommit);
-		//currCommmit.
+		//currCommit.
 		currBranch.headPtr = cmt;
+		currCommit = cmt;
+		this.saveGitlet();
 	}
 
 	public void addFile(String fileName) {
@@ -116,12 +118,12 @@ public class GitSys implements Serializable {
 	}
 
 	public void pirntlog(){
-		while(currCommmit.prevCommit != null) {
+		while(currCommit != null) {
 			System.out.println("====");
-			System.out.println("Commit " + currCommmit.commitID + ".");
-			System.out.println(currCommmit.commitTime);
-			System.out.println(currCommmit.commitMsg + "\n");
-			currCommmit = currCommmit.prevCommit;
+			System.out.println("Commit " + currCommit.commitID + ".");
+			System.out.println(currCommit.commitTime);
+			System.out.println(currCommit.commitMsg + "\n");
+			currCommit = currCommit.prevCommit;
 		}
 	}
 

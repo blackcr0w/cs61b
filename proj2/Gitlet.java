@@ -37,11 +37,12 @@ public class Gitlet {
 			break;
 
 			case "log":
-			//gitlet.printlog();
+			gitlet.pirntlog();
 			break;
 
 		}
 		}
+		//System.out.println(gitlet.filesToCommit);
 		
     }
 
