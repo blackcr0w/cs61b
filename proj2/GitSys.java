@@ -2,7 +2,7 @@ import java.io.*;
 import java.nio.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
-
+//AG
 public class GitSys implements Serializable {
 
 	public Commit currCommit;
@@ -193,7 +193,7 @@ public class GitSys implements Serializable {
 	}
 
 	public static void makeFolder (String folderName) {
-		
+
 	}
  
 
