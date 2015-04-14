@@ -6,12 +6,14 @@ import java.text.SimpleDateFormat;
 public class Gitlet {
 
 	public static void main(String[] args) {
-		GitSys gitlet;
+		//System.out.println("entering the main.");
+		GitSys gitlet = new GitSys();
 		String gitCmd = args[0];
 		//gitlet = new GitletSystem();
-		if (gitCmd == "init") {
-			gitlet = new GitSys();
-			gitlet.initCommit();
+		if (gitCmd.equals("init")) {
+			//System.out.println("entering the init main.");
+			
+			gitlet.initGitlet();
 		}
 		else {
 			gitlet = loadGitlet();
@@ -31,6 +33,7 @@ public class Gitlet {
 
 			case "add":
 			gitlet.addFile(args[1]);
+
 			break;
 
 			case "log":

@@ -14,39 +14,48 @@ public class Commit implements Serializable{
 	public Set<String> storedFiles;
 	public Commit prevCommit;
 
-	public List<Commit> commitList;
+	public List<Commit> childCommitList;
 
 	//constructor
 	public Commit (String commitMsg){
 
-		prevCommit = null;
 
-		this.commitMsg = commitMsg;
 		commitID = 0;
-		folderName = "./.gitlet/commit0:initial commit";
 		Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         String editTime = sdf.format(cal.getTime());
         commitTime = editTime;
-		initCommit();
-		saveCommit();		
+        this.commitMsg = commitMsg;
+        folderName = "./.gitlet/commit0:initial commit";
+        storedFiles = new HashSet<String>();
+		prevCommit = null;
+		childCommitList = new ArrayList<Commit>();
+
+		this.initCommit();
+		this.saveCommit();		
 	}
 
 	public Commit (String commitMsg, Set<String> storedFiles) {
 
 		Commit oldCommit = loadingCommit();
-		prevCommit = oldCommit;
-		this.storedFiles = oldCommit.storedFiles;
-		//this.storedFiles.addAll(storedFiles);
-		this.storedFiles.addAll(storedFiles);
+		//System.out.println(oldCommit);
+		(oldCommit.childCommitList).add(this);////????
 
-		this.commitMsg = commitMsg;
-		commitID = this.commitID + 1;
-		folderName = "./.gitlet/" + "commit" + commitID + ":" + commitMsg;
+		commitID = oldCommit.commitID + 1;
+
 		Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         String editTime = sdf.format(cal.getTime());
         commitTime = editTime;
+
+        this.commitMsg = commitMsg;
+        folderName = "./.gitlet/" + "commit" + commitID + ":" + commitMsg;
+        this.storedFiles = new HashSet<String>();
+		(this.storedFiles).addAll(storedFiles);
+		
+		prevCommit = oldCommit;
+		childCommitList = new ArrayList<Commit>();
+
         //System.out.println("commit with set.");////comment out
 		this.saveFiles();
 		//System.out.println("save files wocao ");
@@ -54,10 +63,11 @@ public class Commit implements Serializable{
 	}
 
 	public void initCommit() {
-		String rootFolderName = ".gitlet";
+		String rootFolderName = "./.gitlet";
 		File rootFolder = null;
-    	File saveFolder = null;		
-		if (storedFiles == null) {//????
+    	File saveFolder = null;
+    	//System.out.println("init commit in commit.java");		
+		if (storedFiles.isEmpty()) {//????
 			try{
 				rootFolder = new File(rootFolderName);
 
@@ -71,10 +81,10 @@ public class Commit implements Serializable{
 
     			boolean flag2 = rootFolder.mkdir();    			
 		        boolean flag1 = saveFolder.mkdir();
-		        //System.out.println("Directory created? "+boolDirectory);
+		        //System.out.folderName = "./.gitlet/commit0:initial commit";println("Directory created? "+boolDirectory);
 		    }
     		catch(Exception e){
-		         //System.out.println("init folder create failed. ");
+		         System.out.println("init folder create failed. ");
 		         e.printStackTrace();
 		     }			
 			return;
@@ -140,7 +150,7 @@ public class Commit implements Serializable{
 		try {
 			
             //这里是写入想要保存的cat类,每次覆盖原来的ser文件
-            File commitSerFile = new File("commitSerFile.ser");
+            File commitSerFile = new File("./.gitlet/commitSerFile.ser");
             FileOutputStream fileOut = new FileOutputStream(commitSerFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(this);
@@ -156,12 +166,13 @@ public class Commit implements Serializable{
 
 	public Commit loadingCommit() {
 		Commit cmt = null;
-        File commitSer = new File("commitSerFile.ser");
+        File commitSer = new File("./.gitlet/commitSerFile.ser");
 
         //if myCatiFile already exists, executing the next line
         //如果cat不存在， 返回null
 
         if (commitSer.exists()) {
+        	//System.out.println("ser exists.");
             try {
                 
                 FileInputStream fileIn = new FileInputStream(commitSer);

@@ -11,7 +11,7 @@ public class GitSys implements Serializable {
 
 	public List<Branch> branchList;
 
-	class Branch {
+	class Branch implements Serializable {
 		String branchName;
 		Commit headPtr;
 
@@ -23,8 +23,11 @@ public class GitSys implements Serializable {
 
 	public Branch currBranch;
 
-	public void initCommit() {
+	public void initGitlet() {
+		//System.out.println("entering initGitlet");
 		Commit cmt = new Commit("initial commit");
+		currCommmit = cmt;
+		filesToCommit = new HashSet<String>();
 		currBranch  = new Branch("master", cmt);
 		branchList = new ArrayList<Branch>();
 		branchList.add(currBranch);
@@ -33,7 +36,9 @@ public class GitSys implements Serializable {
 	}
 
 	public void doCommit(String commitMsg) {
+		//System.out.println(filesToCommit);
 		Commit cmt = new Commit(commitMsg, filesToCommit);
+		//currCommmit.
 		currBranch.headPtr = cmt;
 	}
 
@@ -46,6 +51,7 @@ public class GitSys implements Serializable {
 
 		if (!filesToCommit.contains(fileName)) {
 			filesToCommit.add(fileName);
+			this.saveGitlet();
 			return;
 		}
 
@@ -84,11 +90,29 @@ public class GitSys implements Serializable {
 	}
 
 	public boolean checkFileModified(String fileName) {
-		File newFile = new File(fileName);
-		File oldFile = currCommmit.getFile(fileName);
-		if (newFile.lastModified() > oldFile.lastModified())
-			return true;
-		return false;
+		try {
+			File newFile = new File(fileName);
+			File oldFile = (currBranch.headPtr).getFile(fileName);
+			InputStream inStream1 = null;
+		    InputStream inStream2 = null;
+		    inStream1 = new FileInputStream(oldFile);
+		    inStream2 = new FileInputStream(newFile);
+		    byte[] buffer1 = new byte[2048];
+		    byte[] buffer2 = new byte[2048];
+		    inStream2.read(buffer2);
+		    inStream1.read(buffer1);
+
+		    for (int i = 0; i < buffer2.length; i ++){
+		    	if (buffer1[i] != buffer2[i])
+		    		return false;
+		    }
+		   return true;
+		} catch (IOException e){
+            //jSystem.out.println("io exception fail");
+            e.printStackTrace();
+            }
+
+            return true;		
 	}
 
 	public void pirntlog(){
