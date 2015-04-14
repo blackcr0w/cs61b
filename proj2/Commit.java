@@ -96,17 +96,20 @@ public class Commit implements Serializable{
 	public void saveFiles() {
 
 		for (String inFileName:(this.storedFiles)) {
+			String outFileName = folderName + "/" + inFileName;
 
 			if (inFileName.indexOf("/") != -1) {
 				String[] directory = parseDir(inFileName);
+
 				folderName = folderName +"/" + directory[0];
 
 				//inFileName = directory[1];
 				//makeFolder(folderName);
 			}
 
+
 			//System.out.println(inFileName);
-			String outFileName = folderName + "/" + inFileName;
+			//String outFileName = folderName + "/" + inFileName;
 
 			InputStream inStream = null;
 			OutputStream outStream = null;

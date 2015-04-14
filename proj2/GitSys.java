@@ -2,7 +2,7 @@ import java.io.*;
 import java.nio.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
-//AG
+//JK
 public class GitSys implements Serializable {
 
 	public Commit currCommit;
