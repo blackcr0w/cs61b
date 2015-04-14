@@ -96,16 +96,27 @@ public class Commit implements Serializable{
 	public void saveFiles() {
 
 		for (String inFileName:(this.storedFiles)) {
+
+			if (inFileName.indexOf("/") != -1) {
+				String[] directory = parseDir(inFileName);
+				folderName = folderName +"/" + directory[0];
+
+				//inFileName = directory[1];
+				//makeFolder(folderName);
+			}
+
 			//System.out.println(inFileName);
 			String outFileName = folderName + "/" + inFileName;
 
 			InputStream inStream = null;
 			OutputStream outStream = null;
 
+
+
 			try{
 				File folder = new File(folderName);
 
-    			boolean flag3 = folder.mkdir();    			
+    			boolean flag3 = folder.mkdirs();    			
 
 		        //System.out.println("Directory created? "+boolDirectory);
 		    }
@@ -198,6 +209,15 @@ public class Commit implements Serializable{
 		else System.out.println("fail to get the old file version.");////
 		return null;
 	}
+
+	public static String[] parseDir(String name) {
+		String[] parts = name.split("/");
+		return parts;
+	}
+
+	/*public static void makeFolder (String folderName) {
+
+	}*/
 }
 
 

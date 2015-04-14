@@ -134,12 +134,13 @@ public class GitSys implements Serializable {
 
 			String outFile = cmd;
 			String inFile = (this.currCommit).folderName + "/" + cmd;
-			if (outFileName.indexOf("/")!= -1) {
+			
+		/*	if (outFile.indexOf("/")!= -1) {
 				String[] directory = parseDir(outFile);
 				String folderName = directory[0];
 				outFile = directory[1];
 				makeFolder(folderName);
-			}
+			}*/
 			copyFiles(inFile, outFile);
 
 			break;
@@ -188,15 +189,6 @@ public class GitSys implements Serializable {
     		}
 	}
 
-	public static String[] parseDir(String name) {
-
-	}
-
-	public static void makeFolder (String folderName) {
-
-	}
- 
-
-
+	
 
 }
