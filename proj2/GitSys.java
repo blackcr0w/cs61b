@@ -133,7 +133,16 @@ public class GitSys implements Serializable {
 			case 1://[file name]
 
 			String outFile = cmd;
-			String inFile = (this.currCommit).folderName + "/" + cmd;
+			String inFile;
+
+			if (outFile.indexOf("/") != -1) {
+				//System.out.println("find a slash");
+				String[] parts = outFile.split("/");
+				inFile = (this.currCommit).folderName + "/" + parts[1];
+				//outFile = parts[1];
+ 			}
+ 			else inFile = (this.currCommit).folderName + "/" + outFile;
+			
 			
 		/*	if (outFile.indexOf("/")!= -1) {
 				String[] directory = parseDir(outFile);
