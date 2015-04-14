@@ -127,8 +127,59 @@ public class GitSys implements Serializable {
 		}
 	}
 
+	public void checkout(String cmd) {
+		int ckType = parseCheckout(cmd);
+		switch (ckType) {
+			case 1://[file name]
+			String fileName = cmd;
+			String outFile = cmd;
+			String inFile = (this.currCommit).folderName + "/" + cmd;
+			copyFiles(inFile, outFile);
 
-/*	public void clearFiles() {
-		filesToCommit.clear();
-	}*/
+			break;
+
+			case 2://[commit id] [file name]
+			break;
+
+			case 3://[branch name]
+			break;
+		}
+	}
+
+	public int parseCheckout(String cmd) {
+		return 1;
+	}
+
+	public void copyFiles(String inFileName, String outFileName) {
+		InputStream inStream = null;
+		OutputStream outStream = null;
+		try{
+    	    File inFile =new File(inFileName);
+    	    File outFile =new File(outFileName);
+ 
+    	    inStream = new FileInputStream(inFileName);
+    	    outStream = new FileOutputStream(outFileName);
+ 
+    	    byte[] buffer = new byte[2048];
+ 
+    	    int length;
+    	    //copy the file content in bytes 
+    	    while ((length = inStream.read(buffer)) > 0){
+ 
+    	    	outStream.write(buffer, 0, length);
+ 
+    	    }
+
+    	    inStream.close();
+    	    outStream.close();
+ 
+    	    //System.out.println("File is copied successful!");///comment out
+ 
+    		}catch(IOException e){
+    		System.out.println("fail to checkout file.");///comment out
+    		e.printStackTrace();
+    		}
+	}
+
+
 }

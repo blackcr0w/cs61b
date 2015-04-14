@@ -40,6 +40,10 @@ public class Gitlet {
 			gitlet.pirntlog();
 			break;
 
+			case "checkout":
+			gitlet.checkout(args[1]);
+			break;
+
 		}
 		}
 		//System.out.println(gitlet.filesToCommit);
