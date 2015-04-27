@@ -30,13 +30,26 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
         for (int v = 0; v < maze.V(); v++) distTo[v] = Integer.MAX_VALUE;
         distTo[s] = 0;
         marked[s] = true;
+        
         q.enqueue(s);
+        announce();
+
+/*        if (v == t) {
+            targetFound = true;
+        }
+
+        if (targetFound) {
+            return;
+        }*/
 
         while (!q.isEmpty()) {
             int v = q.dequeue();
+            if (v == t) return;
+            announce();
             for (int w : maze.adj(v)) {
                 if (!marked[w]) {
                     edgeTo[w] = v;
+                    announce();
                     distTo[w] = distTo[v] + 1;
                     marked[w] = true;
                     q.enqueue(w);
