@@ -12,7 +12,7 @@ public abstract class MazeExplorer extends Observable {
 
 
     /** Notify all Oberservers of a change. */
-    protected void announce() {
+    protected void announce() {//Call whenever you want the drawing updated
         setChanged();
         notifyObservers();
     }
@@ -20,9 +20,9 @@ public abstract class MazeExplorer extends Observable {
     public MazeExplorer(Maze m) {
         maze = m;
 
-        distTo = new int[maze.V()];
-        edgeTo = new int[maze.V()];
-        marked = new boolean[maze.V()];
+        distTo = new int[maze.V()];//Distances to draw over the Maze
+        edgeTo = new int[maze.V()];//Edges to draw on Maze
+        marked = new boolean[maze.V()];//Locations to mark in blue
         for (int i = 0; i < maze.V(); i += 1) {
             distTo[i] = Integer.MAX_VALUE;
             edgeTo[i] = Integer.MAX_VALUE;
@@ -31,5 +31,5 @@ public abstract class MazeExplorer extends Observable {
     }
 
     /** Solves the maze, modifying distTo and edgeTo as it goes. */
-    public abstract void solve();
+    public abstract void solve();//Solves the given Maze problem
 } 
