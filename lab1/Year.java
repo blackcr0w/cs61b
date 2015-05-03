@@ -1,5 +1,5 @@
 /** Class that determines whether or not a year is a leap year.
- *  @author YOUR NAME HERE
+ *  @author MJ
  */
 public class Year {
 
@@ -8,13 +8,13 @@ public class Year {
      *          false if year is not a leap year
      */
     static boolean isLeapYear(int year) {
-        if((year%4==0 && year%100!=0)||(year%400==0))
-
-        return true;    // YOUR CODE HERE
-        else 
+        if (year % 400 == 0 || (year % 4 == 0 && year % 100 !=0)){
+            return true; 
+        } 
+        else {
             return false;
+        }
     }
-
 
     /** Calls isLeapYear to print correct statement.
      *  @param  year to be analyzed
