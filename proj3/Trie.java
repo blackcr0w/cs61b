@@ -31,6 +31,8 @@ public class Trie {
 		put(root, key, 0);
 	}
 	public Node put(Node x, String key, int d) {
+		if(key == null || key.length() == 0)
+			throw new IllegalArgumentException();
 		if (x == null) {
 			x = new Node();
 		}
@@ -75,16 +77,17 @@ public class Trie {
     	put (s);
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 	    Trie t = new Trie();
 	    t.insert("hello");
 	    t.insert("hey");
 	    t.insert("goodbye");
+	    t.insert(null);
 	    System.out.println(t.find("hell", false));
 	    System.out.println(t.find("hello", true));
 	    System.out.println(t.find("good", false));
 	    System.out.println(t.find("bye", false));
 	    System.out.println(t.find("heyy", false));
 	    System.out.println(t.find("hell", true));
-	}
+	}*/
 }
