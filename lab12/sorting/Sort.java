@@ -10,16 +10,18 @@ import edu.princeton.cs.introcs.StdDraw;
  *  Arrays are rearranged with smallest item first using compares.
  *  Sorting algorithms are modified to make visualization better
  *  Not all algorithms will be implemented as efficiently as they could be
- *  @author
+ *  @author Mingjie Zhao(MJ) 
  **/
-public final class Sort {
+public final class Sort {///外面是final，nested class and methods 是否也是final？
     /**
      *  Simple insertion sort.
      *  @param a an array of int items.
      **/
     public static void insertionSort(int[] a) {
         int N = a.length;
-
+//插入排序：每次只关心前一半的数组，保持前一半总是有序，
+//每次增加一个元素，插入到前一半有序数组中合适的位置
+        //插入使用交换实现
         for (int i = 0; i < N; i++) {
             for (int j = i; j > 0; j -= 1) {
                 if (less(a[j-1], a[j])) {
@@ -36,7 +38,9 @@ public final class Sort {
      **/
     public static void selectionSort(int[] a) {
         int N = a.length;
-
+//永远只考虑后一半的数组，前一半总是有序
+//从后一半数组中select一个最小的，放到有序数组末尾
+//select使用swap实现
         for (int i = 0; i < N; i += 1) {
             int min = i;
             for (int j = i+1; j < N; j += 1) {
@@ -133,7 +137,7 @@ public final class Sort {
      *  @param a an array of int items.
      **/
     public static void mergeSort(int[] a) {
-        int[] tmpArray = new int[a.length];
+        int[] tmpArray = new int[a.length];//初始化数组:int[] wc = new int[length]
         mergeSort(a, tmpArray, 0, a.length - 1);
     }
 
@@ -253,10 +257,22 @@ public final class Sort {
      **/
     private static void exch(int[] a, int index1, int index2) {
         /** YOUR CODE HERE! */
+       
+            
 
+            
+     
+        SortSounds.clearRectangle(index1);
+        SortSounds.clearRectangle(index2);
         int tmp = a[index1];
         a[index1] = a[index2];
         a[index2] = tmp;
+        SortSounds.drawRectangle(StdDraw.RED, index1);
+        StdDraw.show(5);
+        SortSounds.play(index1);
+        SortSounds.drawRectangle(StdDraw.RED, index2);
+        SortSounds.play(index2);
+        StdDraw.show(5);
 
         /** YOUR CODE HERE! */
 
