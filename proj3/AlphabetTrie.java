@@ -1,17 +1,16 @@
 /**
- * Prefix-Trie. Supports linear time find() and insert(). 
- * Should support determining whether a word is a full word in the 
- * Trie or a prefix.
+ * Alphabet Sort
  * @author MJ
  */
 
 import java.io.*;
 import java.util.*;
 
-public class Trie {
-
-	/* A triset supports upto 26 characters.*/
-	public static final int R = 26;
+public class AlphabetTrie {
+	/* A triset supports upto R characters.*/
+	public static int R;
+	/*This is the array of the new Alphabet*/
+	List<Character> abList = new ArrayList<Character>();
 	/*A Node class inside the Trie.*/
 	public class Node {
 		boolean exists;
@@ -22,11 +21,18 @@ public class Trie {
 			exists = false;
 		}
 	}
-	/* An instance of root node.*/
-	/*public Node root = new Node();*/
 	public Node root;
-
-	public Trie() {
+	
+	public AlphabetTrie(String s) {
+		int R = s.length();
+		for (int i = 0; i < s.length(); i ++) {
+         	char c = s.charAt(i);
+         	abList.add(c);
+         }
+         root = new Node();
+	}
+	
+	public AlphabetTrie() {
 		root = new Node();
 	}
 
@@ -35,7 +41,11 @@ public class Trie {
 		put(root, key, 0);
 	}
 	public Node put(Node x, String key, int d) {
+		System.out.println("in the put.");
+		if(key == null || key.length() == 0) 
+			throw new IllegalArgumentException();
 		if (x == null) {
+			System.out.println("1");
 			x = new Node();
 		}
 		if (d == key.length()) {
@@ -43,12 +53,9 @@ public class Trie {
 			return x;
 		}
 		char c = key.charAt(d);
-		int index;
-		if ((c - 'a') < 0)
-			index = c - 'A';
-		else index = c - 'a';
-		//System.out.println(index);
-		x.links[index] = put(x.links[index], key, d + 1) ;
+		int index = abList.indexOf(c);
+		System.out.println(index);
+		x.links[index] = put(x.links[index], key, d + 1);
 		return x;
 	}	
 
@@ -59,10 +66,7 @@ public class Trie {
 
     	for (int i = 0; i < s.length(); i += 1) {
     		char c = s.charAt(i);
-
-			if ((c - 'a') < 0)
-				index = c - 'A';
-			else index = c - 'a';
+    		index = abList.indexOf(c);
 			if (n.links[index] == null) 
     			return false;
     		else n = n.links[index];
@@ -78,26 +82,23 @@ public class Trie {
     public void insert(String s) {
     	put (s);
     }
-
     public static void main(String[] args) {
-/*	    Trie t = new Trie();
-	    t.insert("hello");
-	    t.insert("hey");
-	    t.insert("goodbye");
-	    System.out.println(t.find("hell", false));
-	    System.out.println(t.find("hello", true));
-	    System.out.println(t.find("good", false));
-	    System.out.println(t.find("bye", false));
-	    System.out.println(t.find("heyy", false));
-	    System.out.println(t.find("hell", true));*/
-
+    	
 	    try {
 	    String s;
         BufferedReader br = 
           new BufferedReader(new InputStreamReader(System.in));
+         s = br.readLine();
+
+         AlphabetTrie myTrie = new AlphabetTrie(s);
+
+         /*for (int i = 0; i < abList.size(); i ++) {
+         	System.out.println(abList.get(i));
+         }*/
         while ((s = br.readLine()) != null) {
         	System.out.println(s);
-        	//s = br.readLine();
+        	myTrie.insert(s);
+        	
         }
        
     } catch (Exception e) {
@@ -105,3 +106,6 @@ public class Trie {
     }
 	}
 }
+
+
+
