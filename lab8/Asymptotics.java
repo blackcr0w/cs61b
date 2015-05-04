@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 
 /** Class for testing the running times of various functions on
  *  different inputs. Usage:
@@ -76,13 +77,24 @@ public class Asymptotics {
     /** Fill in the body of this function so that its running time is
      *  n^(1/2) and so that it returns true if and only if n is prime. */
     public static boolean function4(long n) {
-	return false; //FIX ME
+        for (int i = 2; i < Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+    return true; 
     }
 
     /** Fill in the body of this function so that its best case running
      *  time is log(n) and its worst case running time is n. */
     public static void function5(long n) {
-        //FILL ME IN
+        if (n % 2 == 0) {
+            for (int i = 1; i <= n; i *=2) {
+            }
+        } else {
+            for (int i = 1; i <= n; i++) {
+            }
+        }
     }
 
     public static void usage() {

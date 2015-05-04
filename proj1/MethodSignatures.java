@@ -1,4 +1,4 @@
-public class WordNet {
+public class WordNet {////这里全都是API
     /** Creates a WordNet using files form SYNSETFILENAME and HYPONYMFILENAME */
     public WordNet(String synsetFilename, String hyponymFilename) 
 
