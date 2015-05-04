@@ -24,7 +24,7 @@ public class AlphabetTrie {
 	public Node root;
 	
 	public AlphabetTrie(String s) {
-		int R = s.length();
+		R = s.length();
 		for (int i = 0; i < s.length(); i ++) {
          	char c = s.charAt(i);
          	abList.add(c);
@@ -41,11 +41,11 @@ public class AlphabetTrie {
 		put(root, key, 0);
 	}
 	public Node put(Node x, String key, int d) {
-		System.out.println("in the put.");
+		//System.out.println("in the put.");
 		if(key == null || key.length() == 0) 
 			throw new IllegalArgumentException();
 		if (x == null) {
-			System.out.println("1");
+			//System.out.println("1");
 			x = new Node();
 		}
 		if (d == key.length()) {
@@ -54,7 +54,8 @@ public class AlphabetTrie {
 		}
 		char c = key.charAt(d);
 		int index = abList.indexOf(c);
-		System.out.println(index);
+		/*System.out.println(index);
+		System.out.println(R);*/
 		x.links[index] = put(x.links[index], key, d + 1);
 		return x;
 	}	
@@ -80,9 +81,46 @@ public class AlphabetTrie {
     }
 
     public void insert(String s) {
-    	put (s);
+    	put(s);
     }
-    public static void main(String[] args) {
+
+    public void sort() {
+    	for (int i = 0; i < R; i ++) {
+    		
+    		if (root.links[i] == null) continue;
+    		else {
+    			String s = new String();
+    			s = s + i;
+    			
+    			sort(root.links[i], s);
+    		}  		
+    	}
+    }
+
+    public void sort(Node n, String s) {
+    	//System.out.println("in the sort");
+    	//System.out.println(s);
+    	if (n.exists == true) {
+    		for (int i =0; i < s.length(); i ++) {
+    			char c = s.charAt(i);
+    			//System.out.print(s);
+    			System.out.print(abList.get(c - '0'));
+    		}
+    		System.out.println();
+    		return;
+    	}
+    	/*if ((n.links).length == 0 || n.links == null) 
+    		return;*/
+    	for (int i = 0; i < R; i ++) {
+    		if (n.links[i] != null) {
+    			s = s + i;
+    			sort(n.links[i], s);
+    		}
+    		else continue;
+    	}
+    }
+
+    /*public static void main(String[] args) {
     	
 	    try {
 	    String s;
@@ -92,9 +130,9 @@ public class AlphabetTrie {
 
          AlphabetTrie myTrie = new AlphabetTrie(s);
 
-         /*for (int i = 0; i < abList.size(); i ++) {
+         for (int i = 0; i < abList.size(); i ++) {
          	System.out.println(abList.get(i));
-         }*/
+         }
         while ((s = br.readLine()) != null) {
         	System.out.println(s);
         	myTrie.insert(s);
@@ -104,7 +142,8 @@ public class AlphabetTrie {
     } catch (Exception e) {
         System.err.println("Error:" + e.getMessage());
     }
-	}
+	}*/
+
 }
 
 

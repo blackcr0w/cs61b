@@ -7,15 +7,19 @@ import java.io.*;
 import java.util.*;
 
 public class AlphabetSort {
+
+    public static AlphabetTrie myTrie = new AlphabetTrie();
+    public static String s = new String();
+
     public static void main(String[] args) {
-    	
+
 	    try {
-	    String s;
+	    
         BufferedReader br = 
           new BufferedReader(new InputStreamReader(System.in));
          s = br.readLine();
 
-         AlphabetTrie myTrie = new AlphabetTrie(s);
+         myTrie = new AlphabetTrie(s);
 
          /*for (int i = 0; i < abList.size(); i ++) {
          	System.out.println(abList.get(i));
@@ -24,10 +28,12 @@ public class AlphabetSort {
         	System.out.println(s);
         	myTrie.put(s);
         	
-        }
-       
+        }        
     } catch (Exception e) {
-        System.err.println("Error:" + e.getMessage());
+        System.out.println(e);
+        System.err.println(e.getMessage());
     }
-	}	
+    myTrie.sort();
+	}
+
 }
