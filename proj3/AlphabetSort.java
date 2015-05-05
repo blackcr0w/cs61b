@@ -13,6 +13,7 @@ public class AlphabetSort {
 
     public static void main(String[] args) {
 
+
 	    try {
 	    
         BufferedReader br = 
@@ -28,12 +29,19 @@ public class AlphabetSort {
         	System.out.println(s);
         	myTrie.put(s);
         	
-        }        
+        }      
     } catch (Exception e) {
         System.out.println(e);
         System.err.println(e.getMessage());
     }
-    myTrie.sort();
-	}
+     myTrie.sort();
+ }
 
 }
+
+
+
+
+
+
+

@@ -68,6 +68,7 @@ public class AlphabetTrie {
     	for (int i = 0; i < s.length(); i += 1) {
     		char c = s.charAt(i);
     		index = abList.indexOf(c);
+    		//System.out.println(index + "**" + c);
 			if (n.links[index] == null) 
     			return false;
     		else n = n.links[index];
@@ -85,40 +86,37 @@ public class AlphabetTrie {
     }
 
     public void sort() {
-    	for (int i = 0; i < R; i ++) {
-    		
-    		if (root.links[i] == null) continue;
-    		else {
-    			String s = new String();
-    			s = s + i;
-    			
-    			sort(root.links[i], s);
-    		}  		
-    	}
+    	String s = new String();
+    	sort(root, s);
     }
 
     public void sort(Node n, String s) {
     	//System.out.println("in the sort");
     	//System.out.println(s);
-    	if (n.exists == true) {
-    		for (int i =0; i < s.length(); i ++) {
-    			char c = s.charAt(i);
-    			//System.out.print(s);
-    			System.out.print(abList.get(c - '0'));
-    		}
-    		System.out.println();
+    	if (n == root) 
+    		s = new String();
+    	if ((n.links).length == 0 || n.links == null)
     		return;
-    	}
-    	/*if ((n.links).length == 0 || n.links == null) 
-    		return;*/
     	for (int i = 0; i < R; i ++) {
     		if (n.links[i] != null) {
     			s = s + i;
-    			sort(n.links[i], s);
+    			n = n.links[i];
+
+    			if (n.exists == true) {
+    				for (int j =0; j < s.length(); j ++) {
+    				char c = s.charAt(j);
+    				//System.out.print(s);
+    				System.out.print(abList.get(c - '0'));
+    			}
+    			System.out.println();
+    			}
+    			sort(n, s);
     		}
+    		
     		else continue;
     	}
     }
+
 
     /*public static void main(String[] args) {
     	
