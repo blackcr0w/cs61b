@@ -1,8 +1,7 @@
 import list.EquationList;
 
 public class Calculator {
-    // YOU MAY WISH TO ADD SOME FIELDS
-
+    EquationList a;
     /**
      * TASK 2: ADDING WITH BIT OPERATIONS
      * add() is a method which computes the sum of two integers x and y using 
@@ -12,8 +11,15 @@ public class Calculator {
      * @return the sum of x and y
      **/
     public int add(int x, int y) {
-        // YOUR CODE HERE
-        return -1;
+        int and = x & y;
+        int flip = x ^ y;
+        while (and != 0){
+            int a = and << 1;
+            and = a & flip;
+            flip = flip ^ a;
+        }
+        flip = and ^ flip;
+        return flip;
     }
 
     /**
@@ -25,9 +31,16 @@ public class Calculator {
      * @return the product of x and y
      **/
     public int multiply(int x, int y) {
-        // YOUR CODE HERE
-        return -1;
-    }
+        int a = 0;
+        while (x!=0){
+            if ((x & 1) != 0){
+                a = a+y;
+            } 
+            x= x>>>1;
+            y= y<<1;
+        }
+        return a;
+        }
 
     /**
      * TASK 5A: CALCULATOR HISTORY - IMPLEMENTING THE HISTORY DATA STRUCTURE
@@ -39,7 +52,15 @@ public class Calculator {
      * @param result is an integer corresponding to the result of the equation
      **/
     public void saveEquation(String equation, int result) {
-        // YOUR CODE HERE
+        if(a == null){
+            a = new EquationList(equation, result, null);
+            return;
+        }
+        EquationList temp = a;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = new EquationList(equation,result,null);
     }
 
     /**
@@ -50,7 +71,15 @@ public class Calculator {
      * Ex   "1 + 2 = 3"
      **/
     public void printAllHistory() {
-        // YOUR CODE HERE
+        EquationList temp = a;
+        int count = 0;
+        while (temp != null){
+            temp = temp.next;
+            count = count + 1;
+        }
+        for (int i = 1; i <= count; i++){
+            printHistory(i);
+        }
     }
 
     /**
@@ -61,7 +90,18 @@ public class Calculator {
      * Ex   "1 + 2 = 3"
      **/
     public void printHistory(int n) {
-        // YOUR CODE HERE
+        EquationList temp = a;
+        EquationList temp2 = a;
+        int count = 0;
+        while (temp != null){
+            temp = temp.next;
+            count = count + 1;
+        }
+        int count2 = count - n + 1;
+        for (int i = 1; i < count2; i++){
+            temp2 = temp2.next;
+        }
+        System.out.println(temp2.equation + " = " + temp2.result);
     }    
 
     /**
@@ -69,7 +109,15 @@ public class Calculator {
      * undoEquation() removes the most recent equation we saved to our history.
     **/
     public void undoEquation() {
-        // YOUR CODE HERE
+        EquationList temp = a;
+        if(a.next == null){
+            a = null;
+            return;
+        }
+        while(temp.next.next != null){
+            temp = temp.next;
+        }  
+        temp.next = null;
     }
 
     /**
@@ -77,7 +125,7 @@ public class Calculator {
      * clearHistory() removes all entries in our history.
      **/
     public void clearHistory() {
-        // YOUR CODE HERE
+        a = null;
     }
 
     /**
@@ -87,8 +135,13 @@ public class Calculator {
      * @return the sum of all of the results in history
      **/
     public int cumulativeSum() {
-        // YOUR CODE HERE
-        return -1;
+        EquationList temp = a;
+        int sum = 0;
+        while (temp != null){
+            sum = sum + temp.result;
+            temp = temp.next;
+        }        
+        return sum;
     }
 
     /**
@@ -98,7 +151,12 @@ public class Calculator {
      * @return the product of all of the results in history
      **/
     public int cumulativeProduct() {
-        // YOUR CODE HERE
-        return -1;
+        int product = 1;
+        EquationList temp = a;
+        while (temp != null){
+            product = product * temp.result;
+            temp = temp.next;
+        }         
+        return product;
     }
 }
