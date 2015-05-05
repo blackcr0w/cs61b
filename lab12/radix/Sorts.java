@@ -22,7 +22,8 @@ public class Sorts {
      *    and containing the same keys sorted according to the chosen digit.
      **/
     public static int[] countingSort(int[] keys, int whichDigit) {
-        //YOUR CODE HERE
+        int[] toReturn = new int[keys.length];
+        return toReturn;
     }
 
     /**
@@ -34,7 +35,8 @@ public class Sorts {
      *    and containing the same keys in sorted order.
      **/
     public static int[] radixSort(int[] keys) {
-        //YOUR CODE HERE
+        int[] toReturn = new int[keys.length];
+        return toReturn;
     }
 
 }
