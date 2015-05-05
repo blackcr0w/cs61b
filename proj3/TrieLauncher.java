@@ -11,8 +11,8 @@ public class TrieLauncher {
     public static void main (String[] args) {
         List<String> myList = new ArrayList<String>();
         System.out.println(myList);
-        if (myList == []) 
-            System.out.println("the list is []");
+        /*if (myList == []) 
+            System.out.println("the list is []");*/
 
 
         String ss = new String();
