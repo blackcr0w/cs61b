@@ -1,0 +1,8 @@
+1 F When the array is sorted (i.e. in order), inserting an element, it needs to compare all of the elements in the tree.
+2 F In the worst case is N, but if the (K, V) pair, for example, is root, then it will be  faster.
+3 F This is the result of the worst case.
+4 T Same reason as 1
+5 T N^2 is more than logN
+6 T Both put and containsKey are comparison based and they both requires LogN times of comparisons.
+7 F In the best cases, the lower bound of both search can be constant.
+8 O(nLog(n)) When each time numOfNodes is called, it has n operations, and it takes log(n) levels, so its nLog(n)
