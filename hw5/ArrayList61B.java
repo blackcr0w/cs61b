@@ -1,40 +1,61 @@
 import java.util.AbstractList;
-import java.util.*;
+import java.util.List;
 
-public class ArrayList61B<E> extends AbstractList<E> {
+/** Stores a list of elements in an array that is dynamically resized. */
+public class ArrayList61B<T> extends AbstractList<T> {
 
-	private E[] elist;
-	private int n;
+    /** The elements of this list. */
+    private T[] vals;
+    /** The number of elements in this list. */
+    private int size;
 
-	public ArrayList61B(int initialCapacity) {
-		//if (initialCapacity <= 1)
-		//	throw new initialCapacity;
-		//E[] a = (E[]) Array.newInstance(c, s);
-		// items = (E[]) new Object[1]
-		elist = (E[])new Object[initialCapacity];
-		n = 0;
-	}
+    /** Initializes the internal array to have size INITIALCAPACITY. */
+    public ArrayList61B(int initialCapacity) {
+        if (initialCapacity <= 0) {
+            throw new IllegalArgumentException("Initial capacity must be" +
+                                               " a positive integer.");
+        }
+        vals = (T[]) new Object[initialCapacity]; ////一定要注意这里是怎么吧generic array初始化的
+        size = 0;
+    }
 
-	public ArrayList61B() {
-		elist = (E[])new Object[1];
-		n = 0;
-	}
+    /** Initializes internal array to have size 1. */
+    public ArrayList61B() {
+        this(1); ////直接调用上一个constructor
+    }
 
-	public E get(int i) {
-		//if (i <0 || i >= n)
-		//	throw new IllegalArgumentException;
-		return (elist[i-1]);
-	}
+    /** Returns the element I of this list. */
+    public T get(int i) {
+        if (i < 0 || i >= size) {
+            throw new IllegalArgumentException("Index is out of bounds");
+        }
+        return vals[i];
+    }
 
-	public boolean add(E item) {
-		elist[n] = item;
-		n += 1;
-		return true;
-	}
+    /** Adds ITEM to the end of this list, resizing the internal array if
+     *  necessary. Returns true. */
+    public boolean add(T item) {
+        vals[size] = item;
+        size += 1;
+        if (size >= vals.length) {
+            resize();
+        }
+        return true;
+    }
 
-	public int size() {
-		return n;
-	}
+    /** Returns the number of elements in this list. */
+    public int size() {
+        return size;
+    }
 
-
+    /** Doubles the size of the internal array and copies all elements from
+     *  the old array into the new one. */
+    private void resize() {
+        T[] temp = vals;
+        vals = (T[]) new Object[size * 2];
+        for (int i = 0; i < size; i++) {
+            vals[i] = temp[i];
+        }
+    }
+      
 }
