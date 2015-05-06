@@ -1,6 +1,6 @@
 import java.util.Observable;
 /** 
- *  @author M.J.
+ *  @author M.J
  */
 
 public class MazeBreadthFirstPaths extends MazeExplorer {
